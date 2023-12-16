@@ -9,7 +9,7 @@ public class DragDrop {
 
 	public static void main(String[] args) {
 		//Open browser
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\jvnsi\\eclipse-workspace\\Logintest\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
 		//Open the URL
 		driver.get("https://demoqa.com/droppable");

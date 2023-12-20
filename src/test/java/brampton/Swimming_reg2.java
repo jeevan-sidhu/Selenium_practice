@@ -38,7 +38,7 @@ public class Swimming_reg2 {
 //		muscle_and_strength.click();
 		List<WebElement> muscle_and_strength = driver.findElements(By.xpath("//a[@class=\"bm-category-calendar-link enabled\"]"));
 		act.moveToElement(muscle_and_strength.get(23)).build().perform();
-		muscle_and_strength.get(23).click();
+		muscle_and_strength.get(22).click();
 		
 //		Click on Muscle Conditioning 14+
 		WebElement muscle14 = driver.findElement(By.xpath("//*[@id]/div/div/ul/course-service[1]/li/div[1]/div/div[3]/div[2]/div[2]/div/span"));
@@ -46,7 +46,7 @@ public class Swimming_reg2 {
 		
 //		Get all Program links
 		List<WebElement> links = driver.findElements(By.xpath("//li[@class=\"bm-group-item-row\"]/div/div[3]/div[2]/a"));
-		WebElement muscle_gore_tue = links.get(3);
+		WebElement muscle_gore_tue = links.get(0);
 		
 //		Scroll to desired Program and click
 		js.executeScript("arguments[0].scrollIntoView(true);", muscle_gore_tue);

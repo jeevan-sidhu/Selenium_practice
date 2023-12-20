@@ -9,12 +9,15 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Swimming_reg {
 
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 		WebDriver driver = new FirefoxDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(10));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		
 //		Open Web site Sign-in Page
@@ -31,13 +34,15 @@ public class Swimming_reg {
 		driver.findElement(By.xpath("//div[@id=\"ApplicationMenuContainer\"]/ul/li[4]")).click();
 		
 //		Scroll to end of the page
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"bm-categories\"]/div[1]/div/ul/li[1]/div/a[1]")));
+		Thread.sleep(1000);
 		List<WebElement> all_programs = driver.findElements(By.xpath("//a[@class=\"bm-category-calendar-link enabled\"]"));
 		js.executeScript("arguments[0].scrollIntoView(true);", all_programs.get(all_programs.size()-1));
 //		WebElement last_el = driver.findElement(By.xpath("//*[@id=\"bm-categories\"]/div[13]/div/ul/li[7]/div/a[1]"));		
 //		js.executeScript("arguments[0].scrollIntoView(true);", last_el);
 		
 //		Click on Parent and Child (4 Months to 3 Years) - Learn to Swim
-		all_programs.get(61).click();
+		all_programs.get(60).click();
 //		WebElement swim_parent_child = driver.findElement(By.xpath("//*[@id=\"bm-categories\"]/div[13]/div/ul/li[6]/div/a[1]"));
 //		swim_parent_child.click();
 		
@@ -48,22 +53,22 @@ public class Swimming_reg {
 		
 //		Get all Program links
 		List<WebElement> links = driver.findElements(By.xpath("//li[@class=\"bm-group-item-row\"]/div/div[3]/div[2]/a"));
-		WebElement swim_casie_fri = links.get(12);
+		WebElement swim_casie_fri = links.get(13);
 		
 //		Scroll to desired Program and click
 		js.executeScript("arguments[0].scrollIntoView(true);", swim_casie_fri);
 		swim_casie_fri.click();
 		
 //		Click on Registration button
-		boolean flag=true;
-		while(flag) {
+		boolean flag2=true;
+		while(flag2) {
 			try {
 				driver.findElement(By.xpath("//a[@class=\"bm-button bm-book-button\"]")).click();
-				flag=false;
+				flag2=false;
 			}
 			catch(NoSuchElementException e) {
 				driver.navigate().refresh();
-				flag=true;
+				flag2=true;
 			}
 		}
 		
